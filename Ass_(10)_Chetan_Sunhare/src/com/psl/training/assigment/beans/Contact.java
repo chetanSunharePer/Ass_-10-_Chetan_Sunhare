@@ -1,13 +1,17 @@
 package com.psl.training.assigment.beans;
 
+import java.util.List;
+
 public class Contact {
 	private int contactID;
 	private String contactName;
 	private String emailAddress;
-	public Contact(int contactID,String contactName,String emailAddress) {
+	private List<String> contactNumber;
+	public Contact(int contactID,String contactName,String emailAddress,List<String> contactNumber) {
 		this.contactID = contactID;
 		this.contactName = contactName;
 		this.emailAddress = emailAddress;
+		this.contactNumber = contactNumber;
 	}
 	
 	public int getContactID() {
@@ -28,5 +32,14 @@ public class Contact {
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
+
+	public List<String> getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(List<String> contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+	
 	
 }

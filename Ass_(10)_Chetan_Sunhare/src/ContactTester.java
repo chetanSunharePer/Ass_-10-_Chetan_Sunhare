@@ -20,7 +20,8 @@ public class ContactTester {
 			 System.out.println("1. add new contact\n"
 			 		+ "2. display\n"
 			 		+ "3. remove contact\n"
-			 		+ "4. exit");
+			 		+ "4. Search Contact By Name\n"
+			 		+ "5. exit");
 			 System.out.println("Enter your choice : ");
 			 int key = Integer.parseInt(sc.nextLine());
 			 switch (key) {
@@ -50,6 +51,23 @@ public class ContactTester {
 				service.removeContact(contact1,contacts);
 				break;
 			case 4:
+				System.out.println("Name : ");
+				String name = sc.nextLine();
+				try {
+					Contact con = service.searchContactByName(name, contacts);
+					System.out.println("Contact ID : "+con.getContactID());
+					System.out.println("Contact Email : "+con.getEmailAddress());
+				}catch (Exception e) {
+					e.printStackTrace();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				break;
+			case 5:
 				b = false;
 				System.out.println("Exit");
 				break;
@@ -58,6 +76,7 @@ public class ContactTester {
 				break;
 			}
 		 }
+		sc.close();
 	}
 
 }

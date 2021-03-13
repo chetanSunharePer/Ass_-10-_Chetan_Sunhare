@@ -39,4 +39,15 @@ public class ContactService {
 			throw new ContactNotFoundException("Contact not found");
 		}
 	}
+	public Contact searchContactByName(String name, List<Contact> contacts) throws ContactNotFoundException{
+		Iterator<Contact> i = contacts.iterator();
+		Contact con=null;
+		while (i.hasNext()) {
+			con = i.next();
+			if(con.getContactName().equalsIgnoreCase(name)) {
+				return con;
+			}
+		}
+		throw new ContactNotFoundException("Contact Not Found.");
+	}
 }

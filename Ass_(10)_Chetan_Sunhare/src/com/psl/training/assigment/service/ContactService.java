@@ -50,4 +50,21 @@ public class ContactService {
 		}
 		throw new ContactNotFoundException("Contact Not Found.");
 	}
+	public List<Contact> searchContactByNumber(String number, List<Contact> contacts) throws ContactNotFoundException{
+		List<Contact> searchedContact = new ArrayList<>();
+		boolean b = true;
+		for (Contact contact : contacts) {
+			for (String num : contact.getContactNumber()) {
+				if(num.contains(number)) {
+					b=false;
+					searchedContact.add(contact);
+					break;
+				}
+			}
+		}
+		if(b) {
+			throw new ContactNotFoundException("Number Not found in list.");
+		}
+		return searchedContact;
+	}
 }

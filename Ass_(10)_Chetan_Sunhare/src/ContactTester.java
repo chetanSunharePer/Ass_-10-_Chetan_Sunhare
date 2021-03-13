@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +22,8 @@ public class ContactTester {
 			 		+ "2. display\n"
 			 		+ "3. remove contact\n"
 			 		+ "4. Search Contact By Name\n"
-			 		+ "5. exit");
+			 		+ "5. Search By Number\n"
+			 		+ "6. exit");
 			 System.out.println("Enter your choice : ");
 			 int key = Integer.parseInt(sc.nextLine());
 			 switch (key) {
@@ -68,6 +70,26 @@ public class ContactTester {
 				}
 				break;
 			case 5:
+				System.out.println("Enter Number : ");
+				String number = sc.nextLine();
+				try{
+					List<Contact> serachedContactByNumberList = service.searchContactByNumber(number, contacts);
+					System.out.println("List of Serached Contact");
+					for (Contact contact2 : serachedContactByNumberList) {
+						System.out.println("Name : "+contact2.getContactName());
+					}
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				break;
+			case 6:
 				b = false;
 				System.out.println("Exit");
 				break;

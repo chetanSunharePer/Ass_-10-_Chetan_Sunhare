@@ -13,6 +13,9 @@ public class Contact {
 		this.emailAddress = emailAddress;
 		this.contactNumber = contactNumber;
 	}
+	public Contact(int contactID){
+		this.contactID = contactID;
+	}
 	
 	public int getContactID() {
 		return contactID;

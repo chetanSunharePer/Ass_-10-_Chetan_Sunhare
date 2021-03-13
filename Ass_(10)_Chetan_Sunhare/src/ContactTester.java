@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 import com.psl.training.assigment.beans.Contact;
+import com.psl.training.assigment.beans.ContactNotFoundException;
 import com.psl.training.assigment.service.ContactService;
 
 public class ContactTester {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ContactNotFoundException{
 		// TODO Auto-generated method stub
 		ContactService service = new ContactService();
 		List<Contact> contacts = new ArrayList<>();
@@ -19,7 +19,8 @@ public class ContactTester {
 			 System.out.println("Menu : ");
 			 System.out.println("1. add new contact\n"
 			 		+ "2. display\n"
-			 		+ "3. exit");
+			 		+ "3. remove contact\n"
+			 		+ "4. exit");
 			 System.out.println("Enter your choice : ");
 			 int key = Integer.parseInt(sc.nextLine());
 			 switch (key) {
@@ -43,6 +44,12 @@ public class ContactTester {
 				service.display();
 				break;
 			case 3:
+				System.out.println("Enter Contact Id : ");
+				int contactID1=Integer.parseInt(sc.nextLine());
+				Contact contact1 = new Contact(contactID1);
+				service.removeContact(contact1,contacts);
+				break;
+			case 4:
 				b = false;
 				System.out.println("Exit");
 				break;

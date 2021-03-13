@@ -1,9 +1,11 @@
 package com.psl.training.assigment.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.psl.training.assigment.beans.Contact;
+import com.psl.training.assigment.beans.ContactNotFoundException;
 
 public class ContactService {
 	List<Contact> contacts = new ArrayList<>();
@@ -24,5 +26,17 @@ public class ContactService {
 			System.out.println();
 		}
 	}
-	
+	public void removeContact(Contact contact, List<Contact> contacts) throws ContactNotFoundException{
+		Iterator<Contact> i = this.contacts.iterator();
+		boolean b =true;
+		while (i.hasNext()) {
+			if (i.next().getContactID()==contact.getContactID()) {
+				i.remove();
+				b=false;
+			}
+		}
+		if(b) {
+			throw new ContactNotFoundException("Contact not found");
+		}
+	}
 }
